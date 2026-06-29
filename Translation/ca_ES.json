@@ -1,0 +1,5 @@
+{
+    "phone": "Telèfon",
+    "invalid-phone": "El número de telèfon no és vàlid",
+    "phone-normalized": "Número normalitzat a format internacional"
+}
