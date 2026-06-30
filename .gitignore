@@ -39,3 +39,4 @@ libs/
 *.rar
 *.7z
 nbproject/project.properties
+/nbproject
