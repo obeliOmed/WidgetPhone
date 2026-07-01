@@ -1,5 +1,5 @@
 {
-    "name": "obeliomed/facturascripts-widget-phone",
+    "name": "obeliomed/widget-phone",
     "description": "International phone number validator widget for FacturaScripts forms",
     "type": "library",
     "license": "GPL-3.0-only",

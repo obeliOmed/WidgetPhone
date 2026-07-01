@@ -13,7 +13,7 @@
 
 ## Smoke test (FacturaScripts XAMPP install)
 
-1. Copy `facturascripts-widget-phone/` into `Plugins/WidgetPhone/`
+1. Copy `WidgetPhone/` into `Plugins/WidgetPhone/`
 2. Admin > Plugins > Enable `WidgetPhone`
 3. Open any Edit* controller XMLView — add `<widget type="phone" fieldname="phoneNumber" />`
 4. Enter `600123456` → save → verify DB stores `+34600123456`
