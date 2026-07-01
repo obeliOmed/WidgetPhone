@@ -18,22 +18,17 @@ A free FacturaScripts community plugin that adds a `type="phone"` form widget ba
 
 ## Installation
 
-FacturaScripts uses a single shared `vendor/` at the installation root — plugins do NOT
-carry their own `vendor/`. This plugin declares `giggsey/libphonenumber-for-php` in its
-`composer.json`, but you must install it at the **FacturaScripts root**, not inside the
-plugin folder.
+FacturaScripts uses a single shared `vendor/` at the installation root and never merges a
+plugin's `composer.json` dependencies into it. To avoid requiring a manual `composer
+require` step (which most FS shop admins won't run), this plugin ships its own `vendor/`
+committed to the repo — `giggsey/libphonenumber-for-php` is loaded directly from
+`Plugins/WidgetPhone/vendor/autoload.php` in `Init::init()` on every request.
 
-1. Copy the plugin to `Plugins/WidgetPhone/` inside your FacturaScripts installation.
+1. Copy the plugin to `Plugins/WidgetPhone/` inside your FacturaScripts installation
+   (`vendor/` included — do not delete it).
 2. Go to **Admin → Plugins** and install **WidgetPhone**.
-3. From the **FacturaScripts root** (NOT `Plugins/WidgetPhone/`), run:
-   ```
-   composer require giggsey/libphonenumber-for-php
-   ```
-   (or use the "update dependencies" action in the Plugins admin screen, if your
-   FacturaScripts version exposes it — it runs the equivalent `composer require` at root).
 
-Without this step, any page rendering a `type="phone"` widget will throw
-`Class "libphonenumber\PhoneNumberUtil" not found"`.
+No composer step required — it works out of the box.
 
 ---
 
