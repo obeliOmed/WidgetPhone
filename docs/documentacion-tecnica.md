@@ -54,7 +54,7 @@ Formato directo compatible con WhatsApp Business API (ObelioComms lo usa sin tra
 ## Limitaciones conocidas
 
 - Formato de display (agrupación de dígitos) depende de `libphonenumber` — no personalizable desde el widget.
-- El validador JS es heurístico y más permisivo que el PHP real — un número puede pasar el aviso ✓ en cliente y aun así fallar en servidor (caso raro, pero posible con números fronterizos).
+- **El validador JS es heurístico y puede discrepar del PHP real (`libphonenumber`)** — no es un caso raro, es estructural: el JS usa un regex simple por país (`/^(\+[1-9]\d{6,14}|[6789]\d{8}|9\d{8})$/` para ES), sin conocimiento real de rangos de numeración. Ejemplo concreto: un usuario escribe un móvil de Reino Unido sin prefijo (`07911123456`) en un campo configurado con `country="ES"`. El regex heurístico puede darlo por válido o inválido según casualidad de forma, pero `libphonenumber` en el servidor lo evaluará correctamente como número inválido para España (le falta el prefijo `+44`) — el aviso visual puede mentir. Esto es aceptado como trade-off de rendimiento (no cargar 3MB+ de `libphonenumber` en el navegador) — la validación real y autoritativa es siempre la del servidor.
 - `vendor/` committeado aumenta el peso del repo (~19MB) — es una decisión consciente frente al riesgo de que el admin nunca ejecute composer.
 
 ## Tests
