@@ -19,5 +19,8 @@
         "psr-4": {
             "FacturaScripts\\Plugins\\WidgetPhone\\Test\\": "Test/"
         }
+    },
+    "scripts": {
+        "test": "../vendor/bin/phpunit -c phpunit.xml"
     }
 }
